@@ -1,5 +1,6 @@
 // In App.js in a new project
 
+
 import * as React from "react";
 import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -19,6 +20,15 @@ function App() {
             </Stack.Navigator>
         </NavigationContainer>
     );
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Open up App.js to start working on your app! Running tests</Text>
+      <StatusBar style="auto" />
+    </View>
+  );
+
 }
 
 export default App;
