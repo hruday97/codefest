@@ -43,7 +43,7 @@ const LoginScreen = () => {
                 console.log("Logged in with:", user.email);
                 navigation.navigate("Home")
             })
-            .catch((error) => setError(error.code));
+            .catch((error) => setError(error.code)); //To display the error message above Login Button. Format the code for more sensible text. 
     };
 
     useEffect(() => {
@@ -57,6 +57,7 @@ const LoginScreen = () => {
 
     return (
         <KeyboardAvoidingView style={styles.container} behavior="padding">
+            <View style={styles.boxMain}>
             <View style={styles.inputContainer}>
                 <TextInput
                     placeholder="Email"
@@ -92,6 +93,7 @@ const LoginScreen = () => {
                     Don't have account? Click here to signup
                 </Text>
             </View>
+            </View>
         </KeyboardAvoidingView>
     );
 };
@@ -103,17 +105,33 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "#00111a",
     },
-    inputContainer: { width: "80%" },
+    boxMain: {
+        backgroundColor: "00111a",
+        width: "90%",
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 15,
+        paddingTop: 15,
+        paddingBottom: 15,        
+        shadowColor: "#002133",
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.5,
+        shadowRadius: 15,
+    },
+    inputContainer: {  
+        width: "90%",
+    },
     input: {
-        backgroundColor: "white",
+        backgroundColor: "#002133",
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 10,
-        marginTop: 5,
+        marginTop: 20,
+        width: "100%",
     },
     buttonContainer: {
-        width: "60%",
         justifyContent: "center",
         alignItems: "center",
         marginTop: 40,
@@ -128,7 +146,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     button: {
-        backgroundColor: "#0782F9",
+        backgroundColor: "#ff6600",
         width: "100%",
         padding: 15,
         borderRadius: 10,
