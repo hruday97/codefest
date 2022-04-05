@@ -13,6 +13,7 @@ import { NavigationContainer, useNavigation } from "@react-navigation/native";
 const LoginScreen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const navigation = useNavigation();
 
     const handleSignUp = () => {
@@ -42,7 +43,7 @@ const LoginScreen = () => {
                 console.log("Logged in with:", user.email);
                 navigation.navigate("Home")
             })
-            .catch((error) => alert(error.message));
+            .catch((error) => setError(error.code));
     };
 
     useEffect(() => {
@@ -77,6 +78,12 @@ const LoginScreen = () => {
                 <TouchableOpacity onPress={handleLogin} style={styles.button}>
                     <Text style={[styles.buttonText]}>Login</Text>
                 </TouchableOpacity>
+
+                <Text
+                style={styles.errorText}
+                >
+                    {error}
+                </Text>
                 
                 <Text
                     style={styles.loginText}
@@ -110,6 +117,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginTop: 40,
+    },
+    errorText: {
+        color: "red",
+        fontWeight: "700",  
     },
     loginText: {
         color: "#3740FE",
