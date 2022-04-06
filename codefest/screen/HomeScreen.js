@@ -25,7 +25,7 @@ const HomeScreen = () => {
                 <View style={styles.profileMenu}>
                     <Text>M</Text>
                 </View>
-                <Image source={require("../assets/profileLogo.jpg")} style={styles.profilePhoto}/>
+                {/* <Image source={require("../assets/profileLogo.jpg")} style={styles.profilePhoto}/> */}
             </View>
             <View style={styles.welcomeMessage}>
                 <Text style={styles.welcomeTime}>Good Morning,</Text>
