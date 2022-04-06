@@ -5,7 +5,7 @@ import Colors from '../constants/Colors';
 import ColorScreen from '../screen/ColorScreen';
 import * as Animatable from 'react-native-animatable';
 import Icon, { Icons } from '../components/Icons';
-
+import SignupScreen from './SignupScreen';
 const TabArr = [
   { route: 'Home', label: 'Home', type: Icons.Feather, icon: 'home', component: ColorScreen },
   { route: 'Search', label: 'Search', type: Icons.Feather, icon: 'search', component: ColorScreen },
