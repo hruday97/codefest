@@ -55,38 +55,41 @@ const LoginScreen = () => {
         return unsubscribe;
     }, []);
 
+    const mainLogo = require('../assets/projectLogo.png');
+
     return (
         <KeyboardAvoidingView style={styles.container}>
-            <Image style={styles.logo} source={require('/codefest/assets/favicon.png')}/>
+            <View style={styles.logoBox}>
+                <Image source={mainLogo} style={styles.mainLogo}></Image>
+            </View>
             <View style={styles.boxMain}>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    placeholder="Email"
-                    placeholderTextColor={"#666666"}
-                    value={email}
-                    onChangeText={(text) => setEmail(text)}
-                    style={styles.input}
-                />
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        placeholder="Email"
+                        placeholderTextColor={"#666666"}
+                        value={email}
+                        onChangeText={(text) => setEmail(text)}
+                        style={styles.input}
+                    />
 
-                <TextInput
-                    placeholder="Password"
-                    placeholderTextColor={"#666666"}
-                    value={password}
-                    onChangeText={(text) => setPassword(text)}
-                    style={styles.input}
-                    secureTextEntry
-                />
-            </View>
+                    <TextInput
+                        placeholder="Password"
+                        placeholderTextColor={"#666666"}
+                        value={password}
+                        onChangeText={(text) => setPassword(text)}
+                        style={styles.input}
+                        secureTextEntry
+                    />
+                </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity onPress={() =>navigation.navigate("Signup")} style={styles.signupButton}>
+                        <Text style={[styles.buttonText]}>SignUp</Text>
+                    </TouchableOpacity>
 
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={() =>navigation.navigate("Signup")} style={styles.signupButton}>
-                    <Text style={[styles.buttonText]}>SignUp</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
-                    <Text style={[styles.buttonText]}>Login</Text>
-                </TouchableOpacity>
-            </View>
+                    <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
+                        <Text style={[styles.buttonText]}>Login</Text>
+                    </TouchableOpacity>
+                </View>
             <Text style={styles.errorText}>
                     {error}
             </Text>
@@ -105,16 +108,22 @@ const signupButtonColor = "#8986E1";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: primaryColor,
     },
-    logo:{
+    logoBox: {
+        flex: 1,
+    },
+    mainLogo:{
         width: 100,
         height: 100,
+        marginTop: "25%",
+        borderRadius: 25,
     },
     boxMain: {
-        display: "none",
+        flex: 2,
         position: 'absolute',
         backgroundColor: secondaryColor,
         width: "90%",
