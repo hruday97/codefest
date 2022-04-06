@@ -1,5 +1,6 @@
 import {
     View,
+    Image,
     KeyboardAvoidingView,
     Text,
     TextInput,
@@ -9,7 +10,6 @@ import {
 import React, { useEffect, useState } from "react";
 import { auth } from "../database/firebase";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
-
 const LoginScreen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -56,11 +56,13 @@ const LoginScreen = () => {
     }, []);
 
     return (
-        <KeyboardAvoidingView style={styles.container} behavior="padding">
+        <KeyboardAvoidingView style={styles.container}>
+            <Image style={styles.logo} source={require('/codefest/assets/favicon.png')}/>
             <View style={styles.boxMain}>
             <View style={styles.inputContainer}>
                 <TextInput
                     placeholder="Email"
+                    placeholderTextColor={"#666666"}
                     value={email}
                     onChangeText={(text) => setEmail(text)}
                     style={styles.input}
@@ -68,6 +70,7 @@ const LoginScreen = () => {
 
                 <TextInput
                     placeholder="Password"
+                    placeholderTextColor={"#666666"}
                     value={password}
                     onChangeText={(text) => setPassword(text)}
                     style={styles.input}
@@ -76,58 +79,60 @@ const LoginScreen = () => {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={handleLogin} style={styles.button}>
-                    <Text style={[styles.buttonText]}>Login</Text>
+                <TouchableOpacity onPress={() =>navigation.navigate("Signup")} style={styles.signupButton}>
+                    <Text style={[styles.buttonText]}>SignUp</Text>
                 </TouchableOpacity>
 
-                <Text
-                style={styles.errorText}
-                >
+                <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
+                    <Text style={[styles.buttonText]}>Login</Text>
+                </TouchableOpacity>
+            </View>
+            <Text style={styles.errorText}>
                     {error}
-                </Text>
-                
-                <Text
-                    style={styles.loginText}
-                    onPress={() =>navigation.navigate("Signup")}
-                >
-                    Don't have account? Click here to signup
-                </Text>
-            </View>
-            </View>
+            </Text>
+        </View>
         </KeyboardAvoidingView>
     );
 };
 
 export default LoginScreen;
 
+const primaryColor = "#1C1C24";
+const secondaryColor = "#2A2A34";
+const loginButtonColor = "#FF7D87";
+const signupButtonColor = "#8986E1";
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#00111a",
+        backgroundColor: primaryColor,
+    },
+    logo:{
+        width: 100,
+        height: 100,
     },
     boxMain: {
-        backgroundColor: "00111a",
+        display: "none",
+        position: 'absolute',
+        backgroundColor: secondaryColor,
         width: "90%",
         justifyContent: "center",
         alignItems: "center",
-        borderRadius: 15,
+        borderRadius: 25,
         paddingTop: 15,
         paddingBottom: 15,        
-        shadowColor: "#002133",
-        shadowOffset: {width: -2, height: 4},
-        shadowOpacity: 0.5,
-        shadowRadius: 15,
     },
     inputContainer: {  
         width: "90%",
     },
     input: {
-        backgroundColor: "#002133",
+        color: "white",
+        backgroundColor: primaryColor,
         paddingHorizontal: 15,
         paddingVertical: 10,
-        borderRadius: 10,
+        borderRadius: 15,
         marginTop: 20,
         width: "100%",
     },
@@ -135,21 +140,32 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginTop: 40,
+        flexDirection: "row",
     },
     errorText: {
         color: "red",
         fontWeight: "700",  
+        marginTop: 5,
     },
     loginText: {
         color: "#3740FE",
         marginTop: 25,
         textAlign: "center",
     },
-    button: {
-        backgroundColor: "#ff6600",
-        width: "100%",
+    signupButton: {
+        backgroundColor: signupButtonColor,
+        width: 100,
+        margin: 10,
         padding: 15,
-        borderRadius: 10,
+        borderRadius: 15,
+        alignItems: "center",
+    },
+    loginButton: {
+        backgroundColor: loginButtonColor,
+        width: 100,
+        margin: 10,
+        padding: 15,
+        borderRadius: 15,
         alignItems: "center",
     },
     buttonOutline: {
