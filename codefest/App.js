@@ -21,10 +21,8 @@ function App() {
                 }}
             >
                 <Stack.Screen name="Splash" component={Splash} />
-
                 <Stack.Screen name="Login" component={LoginScreen} />
                 <Stack.Screen name="BottomNav" component={BottomNav} />
-
                 <Stack.Screen name="Signup" component={SignupScreen} />
             </Stack.Navigator>
         </NavigationContainer>
