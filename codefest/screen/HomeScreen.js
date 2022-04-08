@@ -29,22 +29,19 @@ const HomeScreen = () => {
             </View>
             <View style={styles.welcomeMessage}>
                 <Text style={styles.welcomeTime}>Good Morning,</Text>
-                <Text style={styles.welcomeUser}>{auth.currentUser.displayName}</Text>
+                <Text style={styles.welcomeUser}>{auth.currentUser.displayName}🌅</Text>
             </View>
             <View style={styles.feelingsNow}>
-                <Text>How are you feeling?</Text>
+                <View style={[styles.feelingHappy, styles.feelingsButtons]}></View>
+                <View style={[styles.feelingCalm, styles.feelingsButtons]}></View>
+                <View style={[styles.feelingRelaxed, styles.feelingsButtons]}></View>
+                <View style={[styles.feelingFocused, styles.feelingsButtons]}></View>
             </View>
             <View style={styles.monthAndmap}>
                 <View style={styles.calendarBox}><Text>Calendar</Text></View>
                 <View style={styles.mapBox}><Text>Map</Text></View>
             </View>
             <View style={styles.newsArticles}><Text>news</Text></View>
-            {/* <Text style={styles.textStyle}>Hi {auth.currentUser.displayName}, LAMO</Text>
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity onPress={SignOut} style={styles.button}>
-                    <Text style={[styles.buttonText]}>Signout</Text>
-                </TouchableOpacity>
-            </View> */}
         </View>
     );
 };
@@ -78,6 +75,7 @@ const styles = StyleSheet.create({
     welcomeMessage:{
         flex: 2,
         backgroundColor: "green",
+        padding: 10,
     },
     welcomeTime:{
         fontSize: 70,
@@ -89,6 +87,30 @@ const styles = StyleSheet.create({
     feelingsNow:{
         flex: 1,
         backgroundColor: "blue",
+        flexDirection: 'row',
+        justifyContent: "center",
+    },
+    feelingsButtons:{
+        width:60,
+        height: 60,
+        margin: 10,
+        borderRadius: 20,
+    },
+    feelingHappy:{
+        flex: 1,
+        backgroundColor: 'yellow',
+    },
+    feelingCalm:{
+        flex: 1,
+        backgroundColor: 'red',
+    },
+    feelingRelaxed:{
+        flex: 1,
+        backgroundColor: 'aqua',
+    },
+    feelingFocused:{
+        flex: 1,
+        backgroundColor: '#ff00ff',
     },
     monthAndmap:{
         flexDirection: "row",
