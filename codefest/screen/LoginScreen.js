@@ -6,7 +6,9 @@ import {
     TextInput,
     StyleSheet,
     TouchableOpacity,
+    ImageBackground,
 } from "react-native";
+
 import React, { useEffect, useState } from "react";
 import { auth } from "../database/firebase";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
@@ -16,94 +18,91 @@ const LoginScreen = () => {
     const [error, setError] = useState("");
     const navigation = useNavigation();
 
-    const handleSignUp = () => {
-        auth.createUserWithEmailAndPassword(email, password)
-            .then((userCredentials) => {
-                
-                const user = userCredentials.user;
-                
-                console.log("Registered in with:", user.email);
-            })
-            .catch((error) => alert(error.message));
-    };
-
-    const displayEmail = () => {
-        console.log(email);
-    };
-
-    const displayEmailAndLogin = () => {
-        console.log(email);
-        navigation.navigate("Home");
-    };
-
     const handleLogin = () => {
         auth.signInWithEmailAndPassword(email, password)
             .then((userCredentials) => {
                 const user = userCredentials.user;
                 console.log("Logged in with:", user.email);
-                navigation.navigate("Home")
+                navigation.navigate("BottomNav", { screen: "Home" });
             })
-            .catch((error) => setError(error.code)); //To display the error message above Login Button. Format the code for more sensible text. 
+            .catch((error) => setError(error.code)); 
     };
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) {
-                navigation.navigate("Home");
+                navigation.navigate("BottomNav", { screen: "Home" });
             }
         });
         return unsubscribe;
     }, []);
 
-    const mainLogo = require('../assets/projectLogo.png');
+    const mainLogo = require("../assets/projectLogo.png");
+    const purpleBG = require("../assets/purpleBG.jpg");
 
     return (
-        <KeyboardAvoidingView style={styles.container}>
-            <View style={styles.logoBox}>
-                <Image source={mainLogo} style={styles.mainLogo}></Image>
-            </View>
-            <View style={styles.boxMain}>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        placeholder="Email"
-                        placeholderTextColor={"#666666"}
-                        value={email}
-                        onChangeText={(text) => setEmail(text)}
-                        style={styles.input}
-                    />
+        <>
+            <ImageBackground
+                source={purpleBG}
+                resizeMode="cover"
+                style={styles.BG}
+            >
+                <KeyboardAvoidingView style={styles.container}>
+                    <View style={styles.logoBox}>
+                        <Image
+                            source={mainLogo}
+                            style={styles.mainLogo}
+                        ></Image>
+                    </View>
+                    <View style={styles.boxMain}>
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                placeholder="Email"
+                                placeholderTextColor={"#666666"}
+                                value={email}
+                                onChangeText={(text) => setEmail(text)}
+                                style={styles.input}
+                            />
 
-                    <TextInput
-                        placeholder="Password"
-                        placeholderTextColor={"#666666"}
-                        value={password}
-                        onChangeText={(text) => setPassword(text)}
-                        style={styles.input}
-                        secureTextEntry
-                    />
-                </View>
-                <View style={styles.buttonContainer}>
-                    <TouchableOpacity onPress={() =>navigation.navigate("Signup")} style={styles.signupButton}>
-                        <Text style={[styles.buttonText]}>SignUp</Text>
-                    </TouchableOpacity>
+                            <TextInput
+                                placeholder="Password"
+                                placeholderTextColor={"#666666"}
+                                value={password}
+                                onChangeText={(text) => setPassword(text)}
+                                style={styles.input}
+                                secureTextEntry
+                            />
+                        </View>
 
-                    <TouchableOpacity onPress={handleLogin} style={styles.loginButton}>
-                        <Text style={[styles.buttonText]}>Login</Text>
-                    </TouchableOpacity>
-                </View>
-            <Text style={styles.errorText}>
-                    {error}
-            </Text>
-        </View>
-        </KeyboardAvoidingView>
+                        <View style={styles.buttonContainer}>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate("Signup")}
+                                style={styles.signupButton}
+                            >
+                                <Text style={[styles.buttonText]}>SignUp</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                onPress={handleLogin}
+                                style={styles.loginButton}
+                            >
+                                <Text style={[styles.buttonText]}>Login</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={styles.errorText}>{error}</Text>
+                    </View>
+                </KeyboardAvoidingView>
+            </ImageBackground>
+        </>
     );
 };
 
 export default LoginScreen;
 
-const primaryColor = "#1C1C24";
-const secondaryColor = "#2A2A34";
-const loginButtonColor = "#FF7D87";
-const signupButtonColor = "#8986E1";
+const primaryColor = "#f7c89e";
+const secondaryColor = "#8969ff";
+const loginButtonColor = "#f24ea8";
+const signupButtonColor = "#FF7D87";
 
 const styles = StyleSheet.create({
     container: {
@@ -111,39 +110,53 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: primaryColor,
+        // backgroundColor: primaryColor,
     },
     logoBox: {
         flex: 1,
     },
-    mainLogo:{
+    mainLogo: {
         width: 100,
         height: 100,
         marginTop: "25%",
         borderRadius: 25,
+        borderWidth: 0.1,
+        borderColor: "grey",
     },
     boxMain: {
         flex: 2,
-        position: 'absolute',
+        position: "absolute",
         backgroundColor: secondaryColor,
         width: "90%",
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 25,
         paddingTop: 15,
-        paddingBottom: 15,        
+        paddingBottom: 15,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 10,
     },
-    inputContainer: {  
+    BG: {
+        flex: 1,
+        justifyContent: "center",
+    },
+    inputContainer: {
         width: "90%",
+        backgroundColor: secondaryColor,
     },
     input: {
-        color: "white",
-        backgroundColor: primaryColor,
+        color: "black",
+        backgroundColor: "white",
         paddingHorizontal: 15,
         paddingVertical: 10,
         borderRadius: 15,
         marginTop: 20,
         width: "100%",
+        fontSize: 15,
+        fontFamily: "monospace",
     },
     buttonContainer: {
         justifyContent: "center",
@@ -153,7 +166,7 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: "red",
-        fontWeight: "700",  
+        fontWeight: "700",
         marginTop: 5,
     },
     loginText: {

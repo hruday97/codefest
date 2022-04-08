@@ -25,12 +25,15 @@ const HomeScreen = () => {
                 <View style={styles.profileMenu}>
                     <Text>M</Text>
                 </View>
-                <Image source={require("../assets/profileLogo.jpg")} style={styles.profilePhoto}/>
+                <Image
+                    source={require("../assets/profileLogo.jpg")}
+                    style={styles.profilePhoto}
+                />
             </View>
-            <View style={styles.welcomeMessage}>
+            {<View style={styles.welcomeMessage}>
                 <Text style={styles.welcomeTime}>Good Morning,</Text>
                 <Text style={styles.welcomeUser}>{auth.currentUser.displayName}🌅</Text>
-            </View>
+            </View> }
             <View style={styles.feelingsNow}>
                 <View style={[styles.feelingHappy, styles.feelingsButtons]}></View>
                 <View style={[styles.feelingCalm, styles.feelingsButtons]}></View>
@@ -38,8 +41,15 @@ const HomeScreen = () => {
                 <View style={[styles.feelingFocused, styles.feelingsButtons]}></View>
             </View>
             <View style={styles.monthAndmap}>
-                <View style={styles.calendarBox}><Text>Calendar</Text></View>
-                <View style={styles.mapBox}><Text>Map</Text></View>
+                <View style={styles.calendarBox}>
+                    <Text>Calendar</Text>
+                </View>
+                <View style={styles.mapBox}>
+                    <Text>Map</Text>
+                </View>
+            </View>
+            <View style={styles.newsArticles}>
+                <Text>news</Text>
             </View>
             <View style={styles.newsArticles}><Text>news</Text></View>
         </View>
@@ -52,7 +62,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    profileHeader:{
+    profileHeader: {
         flexDirection: "row",
         flex: 1,
         backgroundColor: "red",
@@ -65,26 +75,26 @@ const styles = StyleSheet.create({
         backgroundColor: "pink",
         marginLeft: 10,
     },
-    profilePhoto:{
+    profilePhoto: {
         width: 50,
         height: 50,
         marginRight: 10,
-        marginLeft: 'auto',
+        marginLeft: "auto",
         borderRadius: 20,
     },
-    welcomeMessage:{
+    welcomeMessage: {
         flex: 2,
         backgroundColor: "green",
         padding: 10,
     },
-    welcomeTime:{
+    welcomeTime: {
         fontSize: 70,
     },
-    welcomeUser:{
+    welcomeUser: {
         fontSize: 80,
         flexShrink: 1,
     },
-    feelingsNow:{
+    feelingsNow: {
         flex: 1,
         backgroundColor: "blue",
         flexDirection: 'row',
@@ -112,22 +122,21 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ff00ff',
     },
-    monthAndmap:{
+    monthAndmap: {
         flexDirection: "row",
         flex: 3,
         backgroundColor: "black",
     },
-    calendarBox:{
+    calendarBox: {
         flex: 1,
         backgroundColor: "pink",
     },
-    mapBox:{
+    mapBox: {
         flex: 1,
         backgroundColor: "lime",
     },
-    newsArticles:{
+    newsArticles: {
         flex: 3,
         backgroundColor: "grey",
-    }
-
+    },
 });
