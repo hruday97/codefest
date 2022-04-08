@@ -30,15 +30,14 @@ const HomeScreen = () => {
                     style={styles.profilePhoto}
                 />
             </View>
-            {<View style={styles.welcomeMessage}>
+            <View style={styles.welcomeMessage}>
                 <Text style={styles.welcomeTime}>Good Morning,</Text>
-                <Text style={styles.welcomeUser}>{auth.currentUser.displayName}🌅</Text>
-            </View> }
+                <Text style={styles.welcomeUser}>
+                    {auth.currentUser.displayName}
+                </Text>
+            </View>
             <View style={styles.feelingsNow}>
-                <View style={[styles.feelingHappy, styles.feelingsButtons]}></View>
-                <View style={[styles.feelingCalm, styles.feelingsButtons]}></View>
-                <View style={[styles.feelingRelaxed, styles.feelingsButtons]}></View>
-                <View style={[styles.feelingFocused, styles.feelingsButtons]}></View>
+                <Text>How are you feeling?</Text>
             </View>
             <View style={styles.monthAndmap}>
                 <View style={styles.calendarBox}>
@@ -51,7 +50,6 @@ const HomeScreen = () => {
             <View style={styles.newsArticles}>
                 <Text>news</Text>
             </View>
-            <View style={styles.newsArticles}><Text>news</Text></View>
         </View>
     );
 };
@@ -85,7 +83,6 @@ const styles = StyleSheet.create({
     welcomeMessage: {
         flex: 2,
         backgroundColor: "green",
-        padding: 10,
     },
     welcomeTime: {
         fontSize: 70,
@@ -97,30 +94,6 @@ const styles = StyleSheet.create({
     feelingsNow: {
         flex: 1,
         backgroundColor: "blue",
-        flexDirection: 'row',
-        justifyContent: "center",
-    },
-    feelingsButtons:{
-        width:60,
-        height: 60,
-        margin: 10,
-        borderRadius: 20,
-    },
-    feelingHappy:{
-        flex: 1,
-        backgroundColor: 'yellow',
-    },
-    feelingCalm:{
-        flex: 1,
-        backgroundColor: 'red',
-    },
-    feelingRelaxed:{
-        flex: 1,
-        backgroundColor: 'aqua',
-    },
-    feelingFocused:{
-        flex: 1,
-        backgroundColor: '#ff00ff',
     },
     monthAndmap: {
         flexDirection: "row",
