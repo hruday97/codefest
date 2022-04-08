@@ -48,7 +48,7 @@ const Splash = () => {
     const navigation = useNavigation();
 
     const mainLogo = require("../assets/projectLogo.png");
-    const purpleBG = require("../assets/Splash.png");
+    const purpleBG = require("../assets/splashP.png");
     if (!fontsLoaded) {
         return null;
     } else {

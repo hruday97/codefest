@@ -37,7 +37,7 @@ export default function ColorScreen({ route, navigation }) {
         ref={viewRef}
         easing={'ease-in-out'}
         style={Styles.container}>
-        <View style={{backgroundColor: bgColor, flex: 1}} />
+        <View style={{ backgroundColor: bgColor, flex: 1 }} />
       </Animatable.View>
     </View>
   )

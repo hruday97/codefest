@@ -25,7 +25,7 @@ const LoginScreen = () => {
                 console.log("Logged in with:", user.email);
                 navigation.navigate("BottomNav", { screen: "Home" });
             })
-            .catch((error) => setError(error.code)); 
+            .catch((error) => setError(error.code));
     };
 
     useEffect(() => {
