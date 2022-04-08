@@ -1,17 +1,18 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { useEffect, useRef } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import Colors from '../constants/Colors';
-import ColorScreen from '../screen/ColorScreen';
 import * as Animatable from 'react-native-animatable';
 import Icon, { Icons } from '../components/Icons';
-import SignupScreen from './SignupScreen';
+import HomeScreen from './HomeScreen';
+import Logs from './Logs';
+import Friends from './Friends';
+import Settings from './Settings';
+import Colors from '../constants/Colors';
 const TabArr = [
-  { route: 'Home', label: 'Home', type: Icons.Feather, icon: 'home', component: ColorScreen },
-  { route: 'Search', label: 'Search', type: Icons.Feather, icon: 'search', component: ColorScreen },
-  { route: 'Add', label: 'Add', type: Icons.Feather, icon: 'plus-square', component: ColorScreen },
-  { route: 'Like', label: 'Like', type: Icons.Feather, icon: 'heart', component: ColorScreen },
-  { route: 'Account', label: 'Account', type: Icons.FontAwesome, icon: 'user-circle-o', component: ColorScreen },
+  { route: 'Home', label: 'Home', type: Icons.Feather, icon: 'home', component: HomeScreen },
+  { route: 'Logs', label: 'Logs', type: Icons.Feather, icon: 'file-text', component: Logs },
+  { route: 'Friends', label: 'Friends', type: Icons.Feather, icon: 'users', component: Friends },
+  { route: 'Settings', label: 'Settings', type: Icons.Feather, icon: 'settings', component: Settings },
 ];
 
 const Tab = createBottomTabNavigator();
@@ -54,7 +55,7 @@ const TabButton = (props) => {
           <Animatable.View
             ref={circleRef}
             style={styles.circle} />
-          <Icon type={item.type} name={item.icon} color={focused ? Colors.white : Colors.primary} />
+          <Icon type={item.type} name={item.icon} color={focused ? Colors.white : '#9172ca'} />
         </View>
         <Animatable.Text
           ref={textRef}
@@ -116,26 +117,13 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.primary,
+    backgroundColor: '#9172ca',
     borderRadius: 25,
   },
   text: {
     fontSize: 10,
     textAlign: 'center',
-    color: Colors.primary,
+    color: '#9172ca',
   }
 })
 
-
-// import { View, Text } from 'react-native'
-// import React from 'react'
-
-// const AnimTab2 = () => {
-//   return (
-//     <View>
-//       <Text>AnimTab2</Text>
-//     </View>
-//   )
-// }
-
-// export default AnimTab2

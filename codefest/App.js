@@ -7,7 +7,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./screen/LoginScreen";
 import HomeScreen from "./screen/HomeScreen";
 import SignupScreen from "./screen/SignupScreen";
-import AnimTab2 from "./screen/AnimTab2";
+import BottomNav from "./screen/BottomNav";
+import Splash from "./screen/Splash";
 // import './App.css';
 const Stack = createNativeStackNavigator();
 
@@ -19,11 +20,12 @@ function App() {
                     headerShown: false,
                 }}
             >
-                <Stack.Screen name="anim" component={AnimTab2} />
+                <Stack.Screen name="Splash" component={Splash} />
 
-                {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
+                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="BottomNav" component={BottomNav} />
+
                 <Stack.Screen name="Signup" component={SignupScreen} />
-                {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
             </Stack.Navigator>
         </NavigationContainer>
     );
