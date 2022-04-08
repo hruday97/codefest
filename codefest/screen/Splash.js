@@ -47,7 +47,12 @@ const Splash = () => {
     });
     const navigation = useNavigation();
 
+<<<<<<< HEAD
     const purpleBG = require("../assets/splash.png");
+=======
+    const mainLogo = require("../assets/projectLogo.png");
+    const purpleBG = require("../assets/Splash.png");
+>>>>>>> e1e4db97001946c8bd30ff539a42076b4da47e82
     if (!fontsLoaded) {
         return null;
     } else {

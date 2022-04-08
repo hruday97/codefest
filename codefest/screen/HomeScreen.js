@@ -147,6 +147,10 @@ if (!fontsLoaded) {
                 </View>
                 <View style={styles.mapBox}>
                     <Image source={require('../assets/mapImg.png')} style={styles.mapImg}/>
+                    <Text>Calendar</Text>
+                </View>
+                <View style={styles.mapBox}>
+                    <Text>Map</Text>
                 </View>
             </View>
             <View style={styles.newsArticles}>
@@ -178,6 +182,7 @@ const styles = StyleSheet.create({
     profilePhoto: {
         width: 50,
         height: 50,
+<<<<<<< HEAD
         marginRight: 15,
         marginLeft: "auto",
         borderRadius: 50,
@@ -201,8 +206,16 @@ const styles = StyleSheet.create({
         fontSize: 40,
     },
     feelingsNow: {
+=======
+        marginRight: 10,
+        marginLeft: "auto",
+        borderRadius: 20,
+    },
+    welcomeMessage: {
+>>>>>>> e1e4db97001946c8bd30ff539a42076b4da47e82
         flex: 2,
     },
+<<<<<<< HEAD
     feelingsText: {
         marginTop: 15,
         marginLeft: 10,
@@ -245,8 +258,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#F09E54',
     },
     feelingFocusedBox:{
+=======
+    welcomeTime: {
+        fontSize: 70,
+    },
+    welcomeUser: {
+        fontSize: 80,
+        flexShrink: 1,
+    },
+    feelingsNow: {
+>>>>>>> e1e4db97001946c8bd30ff539a42076b4da47e82
         flex: 1,
     },
+<<<<<<< HEAD
     feelingFocused:{
         backgroundColor: '#A0E3E2',
     },
@@ -259,6 +283,8 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         margin: 10,
     },
+=======
+>>>>>>> e1e4db97001946c8bd30ff539a42076b4da47e82
     monthAndmap: {
         flexDirection: "row",
         flex: 2,
@@ -266,7 +292,11 @@ const styles = StyleSheet.create({
     calendarBox: {
         flex: 1,
     },
+<<<<<<< HEAD
     calendarMainBox: {
+=======
+    calendarBox: {
+>>>>>>> e1e4db97001946c8bd30ff539a42076b4da47e82
         flex: 1,
         margin: 10,
         backgroundColor: '#FCDDEC',
@@ -282,12 +312,15 @@ const styles = StyleSheet.create({
     mapBox: {
         flex: 1,
     },
+<<<<<<< HEAD
     mapImg: {
         borderRadius: 25,
         margin: 10,
         width: "90%",
         height: "90%",
     },
+=======
+>>>>>>> e1e4db97001946c8bd30ff539a42076b4da47e82
     newsArticles: {
         flex: 3,
         backgroundColor: "grey",
