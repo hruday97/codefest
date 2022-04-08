@@ -10,9 +10,13 @@ import {
     TextInput,
     FlatList,
 } from "react-native";
+import call from 'react-native-phone-call'
+import { TouchableWithoutFeedback } from "react-native-web";
 
 const purpleBG = require("../assets/splash.png");
-
+function callNum() {
+  console.log("")
+} 
 export default class Friends extends Component {
     constructor(props) {
         super(props);
@@ -34,21 +38,34 @@ export default class Friends extends Component {
                     color: "#B9E6E7",
                     border: "#00fa21",
                     baroderRad: 3,
-                    number: "(888) 715-2609",
+                    number: "8887152609",
                 },
                 {
                     id: 3,
                     icon: "https://bootdey.com/img/Content/avatar/avatar3.png",
                     description: "Akhil",
                     color: "#dedede",
+                    number: "1254856369",
+                    
                 },
+                {
+                  id: 4,
+                  icon: "https://bootdey.com/img/Content/avatar/avatar5.png",
+                  description: "Mir Balaach",
+                  color: "#dedede",
+                  number: "2158694521",
+              },
             ],
         };
+        
     }
+    
 
     onClickListener = (viewId) => {
         Alert.alert("Alert", "Button pressed " + viewId);
     };
+    
+    
 
     render() {
         return (
@@ -75,7 +92,8 @@ export default class Friends extends Component {
                     }}
                     renderItem={({ item }) => {
                         return (
-                            <View
+                          
+                            <View 
                                 style={[
                                     styles.notificationBox,
                                     {
@@ -94,6 +112,7 @@ export default class Friends extends Component {
                                     {item.description}: {item.number}
                                 </Text>
                             </View>
+                            
                         );
                     }}
                 />
@@ -105,12 +124,13 @@ export default class Friends extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#EBEBEB",
+        backgroundColor: "#ece9f7",
     },
     paragraph: {
         marginTop: 50,
         fontSize: 24, // HEADING "EMERGENCY CARD" SIZE
         fontWeight: "800",
+        
         //   fontFamily:'Baloo',
         textAlign: "center",
         flexDirection: "row",
