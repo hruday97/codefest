@@ -7,13 +7,9 @@ import 'firebase/compat/firestore';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+//Removed Firebase Config After Deadline For Security Purposes
 const firebaseConfig = {
-    apiKey: "AIzaSyAyqJNxIZ5v75mRiDKalQmYHvqr5eARi-w",
-    authDomain: "pcf22-19365.firebaseapp.com",
-    projectId: "pcf22-19365",
-    storageBucket: "pcf22-19365.appspot.com",
-    messagingSenderId: "495160869491",
-    appId: "1:495160869491:web:4cc78a33b8f35022c86006"
+    
   };
 
 // Initialize Firebase
