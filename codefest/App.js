@@ -9,6 +9,8 @@ import HomeScreen from "./screen/HomeScreen";
 import SignupScreen from "./screen/SignupScreen";
 import BottomNav from "./screen/BottomNav";
 import Splash from "./screen/Splash";
+import ViewLogs from "./screen/ViewLogs";
+import Logs from "./screen/Logs";
 // import './App.css';
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +28,8 @@ function App() {
                 <Stack.Screen name="BottomNav" component={BottomNav} />
 
                 <Stack.Screen name="Signup" component={SignupScreen} />
+                <Stack.Screen name="Logs" component={Logs} />
+                <Stack.Screen name="ViewLogs" component={ViewLogs} />
             </Stack.Navigator>
         </NavigationContainer>
     );

@@ -9,21 +9,30 @@ import Friends from "./Friends";
 import Settings from "./Settings";
 import Colors from "../constants/Colors";
 import MapsAlert from "./Maps";
+import ViewLogs from './ViewLogs'
 const TabArr = [
+    
     {
-        route: "Home",
-        label: "Home",
-        type: Icons.Feather,
-        icon: "home",
-        component: HomeScreen,
-    },
-    {
-        route: "Logs",
+        route: "ViewLogs",
         label: "Logs",
         type: Icons.Feather,
         icon: "file-text",
-        component: Logs,
+        component: ViewLogs,
     },
+    {
+      route: "Maps",
+      label: "Maps",
+      type: Icons.Feather,
+      icon: "map-pin",
+      component: MapsAlert,
+  },
+  {
+    route: "Home",
+    label: "Home",
+    type: Icons.Feather,
+    icon: "home",
+    component: HomeScreen,
+},
     {
         route: "Friends",
         label: "Contacts",
@@ -38,13 +47,7 @@ const TabArr = [
         icon: "settings",
         component: Settings,
     },
-    {
-      route: "Maps",
-      label: "Maps",
-      type: Icons.Feather,
-      icon: "map-pin",
-      component: MapsAlert,
-  },
+    
 ];
 
 const Tab = createBottomTabNavigator();

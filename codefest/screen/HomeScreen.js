@@ -417,9 +417,6 @@
 //     },
 // });
 
-
-
-
 import {
     View,
     Image,
@@ -431,6 +428,7 @@ import {
     Button,
     ScrollView,
     FlatList,
+    Linking,
   } from "react-native";
   import React, { useEffect, useState } from "react";
   import { auth } from "../database/firebase";
@@ -490,6 +488,7 @@ import {
   
     // Get the news
     useEffect(() => {
+        console.log(auth.currentUser)
       fetch("https://hygia12.herokuapp.com/news")
         .then((res) => res.json())
         .then((data) => {
@@ -513,11 +512,10 @@ import {
       }
     }, [allNews]);
   
-    useEffect(() => {
-      console.log("Awesome =====================");
-      console.log(newsArray);
-    }, [newsArray]);
-  
+    const handleNewsClick = (newsURL) =>{
+      console.log(newsURL);
+      Linking.openURL(newsURL);
+    };
     const navigation = useNavigation();
   
     if (!fontsLoaded) {
@@ -534,7 +532,7 @@ import {
               />
             </View>
             <Image
-              source={require("../assets/profileLogo.jpg")}
+              source={require("../assets/avatar.png")}
               style={styles.profilePhoto}
             />
           </View>
@@ -555,55 +553,48 @@ import {
             <Text style={styles.feelingsText}>How are you feeling?</Text>
             <View style={styles.feelingsBox}>
               <View style={styles.feelingHappyBox}>
-                <View style={[styles.feelingsOption, styles.feelingHappy]}>
+                <TouchableOpacity style={[styles.feelingsOption, styles.feelingHappy]}>
                   <Icon
                     type={Icons.Ionicons}
                     name={"happy-outline"}
                     style={styles.feelingIcon}
                   />
-                </View>
+                </TouchableOpacity>
                 <Text style={styles.feelingText}> Happy </Text>
               </View>
   
               <View style={styles.feelingCalmBox}>
-                <View style={[styles.feelingsOption, styles.feelingCalm]}>
+                <TouchableOpacity style={[styles.feelingsOption, styles.feelingCalm]}>
                   <Icon
                     type={Icons.Ionicons}
                     name={"leaf-outline"}
                     style={styles.feelingIcon}
                   ></Icon>
-                </View>
+                </TouchableOpacity>
                 <Text style={styles.feelingText}> Calm </Text>
               </View>
   
               <View style={styles.feelingRelaxedBox}>
-                <View style={[styles.feelingsOption, styles.feelingRelaxed]}>
+                <TouchableOpacity style={[styles.feelingsOption, styles.feelingRelaxed]}>
                   <Icon
                     type={Icons.Ionicons}
                     name={"rose-outline"}
                     style={styles.feelingIcon}
                   ></Icon>
-                </View>
+                </TouchableOpacity>
                 <Text style={styles.feelingText}> Relaxed </Text>
               </View>
   
               <View style={styles.feelingFocusedBox}>
-                <View style={[styles.feelingsOption, styles.feelingFocused]}>
+                <TouchableOpacity style={[styles.feelingsOption, styles.feelingFocused]}>
                   <Icon
                     type={Icons.Ionicons}
                     name={"school-outline"}
                     style={styles.feelingIcon}
                   ></Icon>
-                </View>
+                </TouchableOpacity>
                 <Text style={styles.feelingText}> Focused </Text>
               </View>
-            </View>
-          </View>
-  
-          {/* Your plan for today */}
-          <View style={styles.planMainBox}>
-            <View style={styles.planBox}>
-              <Text>Your plan for today</Text>
             </View>
           </View>
   
@@ -613,13 +604,13 @@ import {
               <View style={styles.calendarMainBox} backgroundColor={saBGColor}>
                 <Text style={styles.substanceScore}>{saScore}</Text>
                 <Text style={styles.substanceForecast}>
-                  Substance Overuse Forecast
+                  SORC
                 </Text>
               </View>
             </View>
             <View style={styles.mapBox}>
               <Image
-                source={require("../assets/mapImg.png")}
+                source={require("../assets/mapImg.jpeg")}
                 style={styles.mapImg}
               />
             </View>
@@ -627,7 +618,7 @@ import {
           <View style={styles.newsArticles}>
             <ScrollView horizontal={true}>
               {newsArray.map((news) => (
-                <TouchableOpacity style={styles.newsDisplayBox} onPress={() => console.log(news.source)}>
+                <TouchableOpacity style={styles.newsDisplayBox} onPress={()=> {handleNewsClick(news.source)}}>
                   <Image
                     //onPress={() => console.log(news.source)}
                     source={{ uri: news.img }}
@@ -677,6 +668,7 @@ import {
       flex: 1,
       alignItems: "center",
       paddingTop: 25,
+      marginTop:20,
     },
     profileLogo: {
       width: 50,
@@ -692,17 +684,20 @@ import {
       borderRadius: 50,
     },
     welcomeMessage: {
+        
       flex: 1,
+      marginTop:14,
       justifyContent: "center",
       marginLeft: 10,
     },
     welcomeTime: {
-      fontSize: 40,
+        fontSize: 35,
       fontFamily: "AlegreyaSans_400Regular",
       marginTop: -10,
     },
     welcomeUser: {
-      fontSize: 50,
+        
+      fontSize: 40,
       fontFamily: "AlegreyaSans_700Bold",
     },
     welcomeEmoji: {
@@ -710,14 +705,17 @@ import {
     },
     feelingsNow: {
       flex: 2,
+      fontFamily: "AlegreyaSans_400Regular",
     },
     feelingsText: {
       marginTop: 15,
       marginLeft: 10,
-      fontSize: 30,
+      fontSize: 25,
+      fontFamily: "AlegreyaSans_400Regular",
     },
     feelingsBox: {
       flexDirection: "row",
+      marginBottom:10,
     },
     feelingsOption: {
       height: 70,
@@ -732,6 +730,8 @@ import {
     },
     feelingText: {
       textAlign: "center",
+      fontFamily: "AlegreyaSans_400Regular",
+
     },
     feelingHappyBox: {
       flex: 1,
@@ -805,4 +805,3 @@ import {
     },
   });
   
-

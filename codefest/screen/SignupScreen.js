@@ -13,6 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useState } from "react";
 import { auth } from "../database/firebase";
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { database } from "../database/firebaseRealtime";
 const SignupScreen = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -23,9 +24,14 @@ const SignupScreen = () => {
     const handleSignUp = () => {
         auth.createUserWithEmailAndPassword(email, password)
             .then((userCredentials) => {
+
                 const user = userCredentials.user;
-                user.updateProfile({ displayName: name });
+                user.updateProfile({
+                    displayName:name
+                })
+                const uid = user.uid
                 console.log("Registered in with:", user.email);
+                database.ref('Users').child(uid).set('logs')
                 navigation.navigate("Login");
             })
             .catch((error) => alert(error.message));

@@ -24,8 +24,8 @@ export default class Friends extends Component {
             data: [
                 {
                     id: 1,
-                    icon: "https://bootdey.com/img/Content/avatar/avatar1.png",
-                    description: "Ambulance",
+                    icon: "https://www.logolynx.com/images/logolynx/e4/e493682d1174c7c32bee35af528cd9f9.jpeg",
+                    description: "Emergency",
                     color: "#fc6060",
                     border: "#0036fa",
                     baroderRad: 3,
@@ -33,7 +33,7 @@ export default class Friends extends Component {
                 },
                 {
                     id: 2,
-                    icon: "https://bootdey.com/img/Content/avatar/avatar2.png",
+                    icon: "https://www.logolynx.com/images/logolynx/f5/f5bf4ac9e90d7cbc303dd832d946c5b1.png",
                     description: "Med-Helpline",
                     color: "#B9E6E7",
                     border: "#00fa21",
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#ece9f7",
     },
     paragraph: {
-        marginTop: 50,
+        marginTop: 60,
         fontSize: 24, // HEADING "EMERGENCY CARD" SIZE
         fontWeight: "800",
 

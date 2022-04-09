@@ -1,15 +1,13 @@
-// Import the functions you need from the SDKs you need
-// import * as firebase from 'firebase';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import 'firebase/compat/database';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+//Your web app's Firebase configuration
 
 
-// Initialize Firebase
+//Initialize Firebase
 let app;
 if(firebase.apps.length === 0){
     app = firebase.initializeApp(firebaseConfig)
@@ -17,6 +15,6 @@ if(firebase.apps.length === 0){
     app=firebase.app()
 }
 
-const auth =firebase.auth()
+const database =firebase.database()
 
-export {auth};
+export {database};
