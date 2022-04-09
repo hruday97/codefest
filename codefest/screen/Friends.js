@@ -10,13 +10,13 @@ import {
     TextInput,
     FlatList,
 } from "react-native";
-import call from 'react-native-phone-call'
+import call from "react-native-phone-call";
 import { TouchableWithoutFeedback } from "react-native-web";
 
 const purpleBG = require("../assets/splash.png");
 function callNum() {
-  console.log("")
-} 
+    console.log("");
+}
 export default class Friends extends Component {
     constructor(props) {
         super(props);
@@ -46,26 +46,21 @@ export default class Friends extends Component {
                     description: "Akhil",
                     color: "#dedede",
                     number: "1254856369",
-                    
                 },
                 {
-                  id: 4,
-                  icon: "https://bootdey.com/img/Content/avatar/avatar5.png",
-                  description: "Mir Balaach",
-                  color: "#dedede",
-                  number: "2158694521",
-              },
+                    id: 4,
+                    icon: "https://bootdey.com/img/Content/avatar/avatar5.png",
+                    description: "Mir Balaach",
+                    color: "#dedede",
+                    number: "2158694521",
+                },
             ],
         };
-        
     }
-    
 
     onClickListener = (viewId) => {
         Alert.alert("Alert", "Button pressed " + viewId);
     };
-    
-    
 
     render() {
         return (
@@ -92,8 +87,7 @@ export default class Friends extends Component {
                     }}
                     renderItem={({ item }) => {
                         return (
-                          
-                            <View 
+                            <View
                                 style={[
                                     styles.notificationBox,
                                     {
@@ -108,11 +102,18 @@ export default class Friends extends Component {
                                     source={{ uri: item.icon }}
                                 />
 
-                                <Text style={styles.name}>
+                                <Text
+                                    style={styles.name}
+                                    onPress={() =>
+                                        call({
+                                            number: item.number,
+                                            prompt: false,
+                                        }).catch(console.error)
+                                    }
+                                >
                                     {item.description}: {item.number}
                                 </Text>
                             </View>
-                            
                         );
                     }}
                 />
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
         marginTop: 50,
         fontSize: 24, // HEADING "EMERGENCY CARD" SIZE
         fontWeight: "800",
-        
+
         //   fontFamily:'Baloo',
         textAlign: "center",
         flexDirection: "row",
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         marginTop: 0,
     },
-    
+
     icon: {
         width: 30,
         height: 30,

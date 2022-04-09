@@ -8,6 +8,7 @@ import Logs from "./Logs";
 import Friends from "./Friends";
 import Settings from "./Settings";
 import Colors from "../constants/Colors";
+import MapsAlert from "./Maps";
 const TabArr = [
     {
         route: "Home",
@@ -25,7 +26,7 @@ const TabArr = [
     },
     {
         route: "Friends",
-        label: "Friends",
+        label: "Contacts",
         type: Icons.Feather,
         icon: "users",
         component: Friends,
@@ -37,6 +38,13 @@ const TabArr = [
         icon: "settings",
         component: Settings,
     },
+    {
+      route: "Maps",
+      label: "Maps",
+      type: Icons.Feather,
+      icon: "map-pin",
+      component: MapsAlert,
+  },
 ];
 
 const Tab = createBottomTabNavigator();
